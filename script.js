@@ -44,36 +44,24 @@ const filterNew = function (movies) {
 
 // Functie - Selecteren filters //
 Array.from(filter).forEach(function (event) {
-  event.addEventListener("change", (event) => {
-    let filterType = event.target.value;
+  event.addEventListener("change", (filterInput) => {
+    let filterType = filterInput.target.value;
+    clearGrid();
 
     switch (filterType) {
       case "all-movies":
-        clearGrid();
         addMoviesToDom(allMovies);
         break;
       case "new-movies":
-        clearGrid();
         addMoviesToDom(filterNew(allMovies));
         break;
       case "avenger":
-        clearGrid();
-        addMoviesToDom(filterName(allMovies, filterType));
-        break;
       case "x-men":
-        clearGrid();
-        addMoviesToDom(filterName(allMovies, filterType));
-        break;
       case "princess":
-        clearGrid();
-        addMoviesToDom(filterName(allMovies, filterType));
-        break;
       case "batman":
-        clearGrid();
         addMoviesToDom(filterName(allMovies, filterType));
         break;
       default:
-        clearGrid();
         addMoviesToDom(allMovies);
     }
   });
